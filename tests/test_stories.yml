@@ -1,0 +1,62 @@
+version: "3.1"
+
+stories:
+  - story: candidate interview happy path
+    steps:
+      - user: |
+          начнем интервью
+        intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - user: |
+          меня зовут Анна
+        intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - user: |
+          хочу на позицию Data Scientist
+        intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - user: |
+          у меня 3 года опыта
+        intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: skills
+      - user: |
+          знаю Python, SQL, sklearn и PyTorch
+        intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - user: |
+          строила модель классификации клиентов
+        intent: provide_project_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - user: |
+          обучала ML-модели и сравнивала качество по метрикам
+        intent: answer_ds_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - user: |
+          презентовала результаты анализа бизнесу
+        intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: candidate says goodbye
+    steps:
+      - user: |
+          до свидания
+        intent: goodbye
+      - action: utter_goodbye

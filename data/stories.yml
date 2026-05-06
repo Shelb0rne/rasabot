@@ -1,0 +1,193 @@
+version: "3.1"
+
+stories:
+  - story: interview for data scientist
+    steps:
+      - intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - candidate_name: "Анна"
+      - slot_was_set:
+          - requested_slot: desired_role
+      - intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - desired_role: data_scientist
+      - slot_was_set:
+          - requested_slot: experience_years
+      - intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - experience_years: 3.0
+      - slot_was_set:
+          - requested_slot: skills
+      - intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - intent: provide_project_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - intent: answer_ds_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: interview for project manager
+    steps:
+      - intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: skills
+      - intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - intent: answer_pm_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - intent: answer_pm_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: interview for data analyst
+    steps:
+      - intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: skills
+      - intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - intent: answer_da_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - intent: answer_da_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: interview for data engineer
+    steps:
+      - intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: skills
+      - intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - intent: answer_de_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - intent: answer_de_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: interview for mlops engineer
+    steps:
+      - intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - intent: provide_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: skills
+      - intent: provide_skills
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: project_experience
+      - intent: answer_mlops_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: technical_experience
+      - intent: answer_mlops_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: business_experience
+      - intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate

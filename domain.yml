@@ -1,0 +1,145 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - start_interview
+  - provide_name
+  - provide_role_interest
+  - provide_experience
+  - provide_skills
+  - provide_project_experience
+  - answer_pm_question
+  - answer_da_question
+  - answer_de_question
+  - answer_ds_question
+  - answer_mlops_question
+  - answer_soft_skills
+  - dont_know
+  - deny
+  - affirm
+  - out_of_scope
+
+entities:
+  - name
+  - role
+  - skill
+  - experience_years
+
+slots:
+  candidate_name:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  desired_role:
+    type: categorical
+    values:
+      - project_manager
+      - data_analyst
+      - data_engineer
+      - data_scientist
+      - mlops_engineer
+      - unknown
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  experience_years:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  skills:
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  project_experience:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  technical_experience:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  business_experience:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  interview_result:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+forms:
+  interview_form:
+    required_slots:
+      - candidate_name
+      - desired_role
+      - experience_years
+      - skills
+      - project_experience
+      - technical_experience
+      - business_experience
+
+responses:
+  utter_greet:
+    - text: "Здравствуйте! Я HR-бот первой линии для ML-команды."
+
+  utter_goodbye:
+    - text: "До свидания! Спасибо за интерес к нашей команде."
+
+  utter_start_interview:
+    - text: "Начнем короткое интервью. Я задам несколько вопросов и определю, на какую роль вы можете подойти."
+
+  utter_ask_candidate_name:
+    - text: "Как вас зовут?"
+
+  utter_ask_desired_role:
+    - text: "На какую позицию вы претендуете: Project Manager, Data Analyst, Data Engineer, Data Scientist или MLOps Engineer?"
+
+  utter_ask_experience_years:
+    - text: "Сколько лет у вас опыта в IT, аналитике, ML, инфраструктуре или управлении проектами?"
+
+  utter_ask_skills:
+    - text: "Перечислите ваши основные навыки и инструменты."
+
+  utter_ask_project_experience:
+    - text: "Расскажите коротко о самом релевантном проекте, в котором вы участвовали."
+
+  utter_ask_technical_experience:
+    - text: "Какие технические задачи вы выполняли лично?"
+
+  utter_ask_business_experience:
+    - text: "Был ли у вас опыт общения с бизнесом, заказчиками или постановки требований?"
+
+  utter_dont_know:
+    - text: "Хорошо, зафиксирую, что по этому вопросу пока нет ответа."
+
+  utter_out_of_scope:
+    - text: "Я провожу только первичное интервью для ролей ML-команды. Вернемся к вопросам по опыту и навыкам."
+
+  utter_affirm:
+    - text: "Отлично, продолжаем."
+
+  utter_deny:
+    - text: "Понял, зафиксировал ответ."
+
+actions:
+  - validate_interview_form
+  - action_evaluate_candidate
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
