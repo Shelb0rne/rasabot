@@ -26,12 +26,24 @@ stories:
       - slot_was_set:
           - experience_years: 3.0
       - slot_was_set:
+          - requested_slot: expected_salary
+      - intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - intent: provide_skills
       - action: interview_form
       - slot_was_set:
           - requested_slot: project_experience
       - intent: provide_project_experience
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - intent: answer_ds_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
+      - intent: answer_ds_question
       - action: interview_form
       - slot_was_set:
           - requested_slot: technical_experience
@@ -63,11 +75,23 @@ stories:
       - intent: provide_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: expected_salary
+      - intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - intent: provide_skills
       - action: interview_form
       - slot_was_set:
           - requested_slot: project_experience
+      - intent: answer_pm_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - intent: answer_pm_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
       - intent: answer_pm_question
       - action: interview_form
       - slot_was_set:
@@ -100,11 +124,23 @@ stories:
       - intent: provide_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: expected_salary
+      - intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - intent: provide_skills
       - action: interview_form
       - slot_was_set:
           - requested_slot: project_experience
+      - intent: answer_da_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - intent: answer_da_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
       - intent: answer_da_question
       - action: interview_form
       - slot_was_set:
@@ -137,11 +173,23 @@ stories:
       - intent: provide_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: expected_salary
+      - intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - intent: provide_skills
       - action: interview_form
       - slot_was_set:
           - requested_slot: project_experience
+      - intent: answer_de_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - intent: answer_de_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
       - intent: answer_de_question
       - action: interview_form
       - slot_was_set:
@@ -174,11 +222,23 @@ stories:
       - intent: provide_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: expected_salary
+      - intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - intent: provide_skills
       - action: interview_form
       - slot_was_set:
           - requested_slot: project_experience
+      - intent: answer_mlops_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - intent: answer_mlops_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
       - intent: answer_mlops_question
       - action: interview_form
       - slot_was_set:

@@ -28,6 +28,12 @@ stories:
         intent: provide_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: expected_salary
+      - user: |
+          ожидаю 200 тысяч рублей
+        intent: provide_salary
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: skills
       - user: |
           знаю Python, SQL, sklearn и PyTorch
@@ -40,6 +46,18 @@ stories:
         intent: provide_project_experience
       - action: interview_form
       - slot_was_set:
+          - requested_slot: role_specific_answer_1
+      - user: |
+          для дисбаланса классов выберу precision, recall, F1 и PR-AUC
+        intent: answer_ds_question
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: role_specific_answer_2
+      - user: |
+          проверю валидацию и утечку данных, добавлю регуляризацию и упрощу модель
+        intent: answer_ds_question
+      - action: interview_form
+      - slot_was_set:
           - requested_slot: technical_experience
       - user: |
           обучала ML-модели и сравнивала качество по метрикам
@@ -50,6 +68,35 @@ stories:
       - user: |
           презентовала результаты анализа бизнесу
         intent: answer_soft_skills
+      - action: interview_form
+      - active_loop: null
+      - action: action_evaluate_candidate
+
+  - story: candidate rejected because experience is too low
+    steps:
+      - user: |
+          начнем интервью
+        intent: start_interview
+      - action: utter_start_interview
+      - action: interview_form
+      - active_loop: interview_form
+      - slot_was_set:
+          - requested_slot: candidate_name
+      - user: |
+          меня зовут Иван
+        intent: provide_name
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: desired_role
+      - user: |
+          хочу на позицию Data Analyst
+        intent: provide_role_interest
+      - action: interview_form
+      - slot_was_set:
+          - requested_slot: experience_years
+      - user: |
+          опыта почти нет
+        intent: provide_experience
       - action: interview_form
       - active_loop: null
       - action: action_evaluate_candidate

@@ -65,6 +65,29 @@ class FixedTelegramInput(InputChannel):
     def _is_button(message: Update) -> bool:
         return message.callback_query is not None
 
+    @staticmethod
+    def _telegram_metadata(update: Update, msg: Any) -> Dict[Text, Any]:
+        user = None
+        if update.callback_query:
+            user = update.callback_query.from_user
+        elif update.edited_message:
+            user = update.edited_message.from_user
+        elif update.message:
+            user = update.message.from_user
+
+        first_name = getattr(user, "first_name", None)
+        last_name = getattr(user, "last_name", None)
+        full_name = " ".join(part for part in [first_name, last_name] if part)
+
+        return {
+            "telegram_chat_id": getattr(getattr(msg, "chat", None), "id", None),
+            "telegram_user_id": getattr(user, "id", None),
+            "telegram_username": getattr(user, "username", None),
+            "telegram_first_name": first_name,
+            "telegram_last_name": last_name,
+            "telegram_full_name": full_name or None,
+        }
+
     def blueprint(
         self, on_new_message: Callable[[UserMessage], Awaitable[Any]]
     ) -> Blueprint:
@@ -152,7 +175,7 @@ class FixedTelegramInput(InputChannel):
                     return response.text("success")
 
             sender_id = msg.chat.id
-            metadata = self.get_metadata(request)
+            metadata = self._telegram_metadata(update, msg)
 
             try:
                 if text == (INTENT_MESSAGE_PREFIX + USER_INTENT_RESTART):

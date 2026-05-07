@@ -7,6 +7,7 @@ intents:
   - provide_name
   - provide_role_interest
   - provide_experience
+  - provide_salary
   - provide_skills
   - provide_project_experience
   - answer_pm_question
@@ -17,7 +18,6 @@ intents:
   - answer_soft_skills
   - dont_know
   - deny
-  - affirm
   - out_of_scope
 
 entities:
@@ -52,6 +52,12 @@ slots:
     mappings:
       - type: custom
 
+  expected_salary:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
   skills:
     type: list
     influence_conversation: false
@@ -76,7 +82,25 @@ slots:
     mappings:
       - type: custom
 
+  role_specific_answer_1:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  role_specific_answer_2:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
   interview_result:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  early_rejection_reason:
     type: text
     influence_conversation: false
     mappings:
@@ -88,14 +112,17 @@ forms:
       - candidate_name
       - desired_role
       - experience_years
+      - expected_salary
       - skills
       - project_experience
+      - role_specific_answer_1
+      - role_specific_answer_2
       - technical_experience
       - business_experience
 
 responses:
   utter_greet:
-    - text: "Здравствуйте! Я HR-бот первой линии для ML-команды."
+    - text: "Здравствуйте! Я HR-бот для ML-команды. Я проведу вам первичное интервью и передам результаты HR. Готовы ли вы начать?"
 
   utter_goodbye:
     - text: "До свидания! Спасибо за интерес к нашей команде."
@@ -111,6 +138,9 @@ responses:
 
   utter_ask_experience_years:
     - text: "Сколько лет у вас опыта в IT, аналитике, ML, инфраструктуре или управлении проектами?"
+
+  utter_ask_expected_salary:
+    - text: "Какие у вас зарплатные ожидания?"
 
   utter_ask_skills:
     - text: "Перечислите ваши основные навыки и инструменты."
@@ -130,14 +160,13 @@ responses:
   utter_out_of_scope:
     - text: "Я провожу только первичное интервью для ролей ML-команды. Вернемся к вопросам по опыту и навыкам."
 
-  utter_affirm:
-    - text: "Отлично, продолжаем."
-
   utter_deny:
     - text: "Понял, зафиксировал ответ."
 
 actions:
   - validate_interview_form
+  - action_ask_interview_form_role_specific_answer_1
+  - action_ask_interview_form_role_specific_answer_2
   - action_evaluate_candidate
 
 session_config:
